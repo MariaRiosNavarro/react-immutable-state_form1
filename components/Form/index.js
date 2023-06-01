@@ -1,7 +1,9 @@
-import { useState } from "react";
+// import { useState } from "react";
+import {}
 import { StyledForm, StyledInputContainer } from "./Form.styled";
 
 export default function Form() {
+  //useImmer Version: 
   const [mountainState, setMountainState] = useState({
     name: "Mount Everest",
     montainValues: {
@@ -10,48 +12,69 @@ export default function Form() {
     },
   });
 
-  function handleNameChange(event) {
-    const montainFormValue = event.target.value;
-    setMountainState((currentMountainState) => {
-      return {
-        ...currentMountainState,
-        name: montainFormValue,
-      };
-    });
-  }
-  // short Notation:
+  //--------useStateVersion
+
+  // -------------first handle function
+  // function handleNameChange(event) {
+  //   const montainFormValue = event.target.value;
+  //   setMountainState((currentMountainState) => {
+  //     return {
+  //       ...currentMountainState,
+  //       name: montainFormValue,
+  //     };
+  //   });
+  // }
+  //  short Notation of the same function avobe:
+
   //  function handleNameChange(event) {
   //   const montainFormValue= event.target.value;
   //   setMountainState((currentMountainState)=>({
   //     ...currentMountainState,
   //     name: montainFormValue,
   //   }));
+// -------------second handle function
+  // function handleAltitudeChange(event) {
+  //   const montainFormValue = event.target.value;
+  //   setMountainState((currentMountainState) => {
+  //     return {
+  //       ...currentMountainState,
+  //       montainValues: {
+  //         ...currentMountainState.montainValues,
+  //         altitude: montainFormValue ? parseInt(montainFormValue) : 0,
+  //       },
+  //     };
+  //   });
+  // }
+// -------------third handle function
+  // function handleMountainRangeChange(event) {
+  //   const montainFormValue = event.target.value;
+  //   setMountainState((currentMountainState) => {
+  //     return {
+  //       ...currentMountainState,
+  //       montainValues: {
+  //         ...currentMountainState.montainValues,
+  //         mountainRange: montainFormValue,
+  //       },
+  //     };
+  //   });
+  // }
 
-  function handleAltitudeChange(event) {
-    const montainFormValue = event.target.value;
-    setMountainState((currentMountainState) => {
-      return {
-        ...currentMountainState,
-        montainValues: {
-          ...currentMountainState.montainValues,
-          altitude: montainFormValue ? parseInt(montainFormValue) : 0,
-        },
-      };
-    });
-  }
+//--------useImmerVersion 
 
-  function handleMountainRangeChange(event) {
-    const montainFormValue = event.target.value;
-    setMountainState((currentMountainState) => {
-      return {
-        ...currentMountainState,
-        montainValues: {
-          ...currentMountainState.montainValues,
-          mountainRange: montainFormValue,
-        },
-      };
-    });
-  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   return (
     <StyledForm>
