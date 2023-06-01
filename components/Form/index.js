@@ -2,31 +2,72 @@ import { useState } from "react";
 import { StyledForm, StyledInputContainer } from "./Form.styled";
 
 export default function Form() {
-  const [mountain, setMountain] = useState({
+  const [mountainState, setMountainState] = useState({
     name: "Mount Everest",
-    values: {
+    montainValues: {
       altitude: 8848,
       mountainRange: "Himalayas",
     },
   });
 
-  function handleNameChange(event) {}
+  function handleNameChange(event) {
+    const montainFormValue = event.target.value;
+    setMountainState((currentMountainState) => {
+      return {
+        ...currentMountainState,
+        name: montainFormValue,
+      };
+    });
+  }
 
-  function handleAltitudeChange(event) {}
+  //  function handleNameChange(event) {
+  //   const montainFormValue= event.target.value;
+  //   setMountainState((currentMountainState)=>({
+  //     ...currentMountainState,
+  //     name: montainFormValue,
+  //   }));
 
-  function handleMountainRangeChange(event) {}
+  function handleAltitudeChange(event) {
+    const montainFormValue = event.target.value;
+    setMountainState((currentMountainState) => {
+      return {
+        ...currentMountainState,
+        montainValues: {
+          ...currentMountainState.montainValues,
+          altitude: montainFormValue ? parseInt(montainFormValue) : 0,
+        },
+      };
+    });
+  }
+
+  function handleMountainRangeChange(event) {
+    const montainFormValue = event.target.value;
+    setMountainState((currentMountainState) => {
+      return {
+        ...currentMountainState,
+        montainValues: {
+          ...currentMountainState.montainValues,
+          mountainRange: montainFormValue,
+        },
+      };
+    });
+  }
 
   return (
     <StyledForm>
       <StyledInputContainer>
         <label htmlFor="name">Name:</label>
-        <input id="name" value={mountain.name} onChange={handleNameChange} />
+        <input
+          id="name"
+          value={mountainState.name}
+          onChange={handleNameChange}
+        />
       </StyledInputContainer>
       <StyledInputContainer>
         <label htmlFor="altitude">Altitude:</label>
         <input
           id="altitude"
-          value={mountain.values.altitude}
+          value={mountainState.montainValues.altitude}
           onChange={handleAltitudeChange}
         />
       </StyledInputContainer>
@@ -34,17 +75,17 @@ export default function Form() {
         <label htmlFor="mountainRange">Mountain Range:</label>
         <input
           id="mountainRange"
-          value={mountain.values.mountainRange}
+          value={mountainState.montainValues.mountainRange}
           onChange={handleMountainRangeChange}
         />
       </StyledInputContainer>
       <output>
-        <i>{mountain.name}</i>
+        <i>{mountainState.name}</i>
         {" is "}
-        {mountain.values.altitude}
+        {mountainState.montainValues.altitude}
         {" meters high"}
         <br />
-        (and located in the {mountain.values.mountainRange})
+        (and located in the {mountainState.montainValues.mountainRange})
       </output>
     </StyledForm>
   );
