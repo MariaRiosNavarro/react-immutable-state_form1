@@ -19,7 +19,7 @@ export default function Form() {
       };
     });
   }
-
+  // short Notation:
   //  function handleNameChange(event) {
   //   const montainFormValue= event.target.value;
   //   setMountainState((currentMountainState)=>({
